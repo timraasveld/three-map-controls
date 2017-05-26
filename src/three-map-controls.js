@@ -584,8 +584,6 @@ var MapControls = function ( object, domElement, options ) {
 
     if ( scope.enabled === false ) return;
 
-    event.preventDefault();
-
     if ( event.button === scope.mouseButtons.ZOOM ) {
 
       if ( scope.enableZoom === false ) return;
@@ -618,8 +616,6 @@ var MapControls = function ( object, domElement, options ) {
   function onMouseMove( event ) {
 
     if ( scope.enabled === false ) return;
-
-    event.preventDefault();
 
     if ( state === STATE.DOLLY ) {
 
@@ -655,9 +651,6 @@ var MapControls = function ( object, domElement, options ) {
   function onMouseWheel( event ) {
 
     if ( scope.enabled === false || scope.enableZoom === false || ( state !== STATE.NONE ) ) return;
-
-    event.preventDefault();
-    event.stopPropagation();
 
     handleMouseWheel( event );
 
@@ -717,9 +710,6 @@ var MapControls = function ( object, domElement, options ) {
 
     if ( scope.enabled === false ) return;
 
-    event.preventDefault();
-    event.stopPropagation();
-
     switch ( event.touches.length ) {
 
       case 1: // one-fingered touch: pan
@@ -758,16 +748,6 @@ var MapControls = function ( object, domElement, options ) {
     state = STATE.NONE;
 
   }
-
-  function onContextMenu( event ) {
-
-    event.preventDefault();
-
-  }
-
-  //
-
-  scope.domElement.addEventListener( 'contextmenu', onContextMenu, false );
 
   scope.domElement.addEventListener( 'mousedown', onMouseDown, false );
   scope.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
