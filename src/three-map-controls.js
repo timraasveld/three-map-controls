@@ -341,7 +341,7 @@ var MapControls = function ( object, domElement, options ) {
 
   function handleUpdateDollyTrackMouse(event){
     var prevMouse = mouse.clone();
-    mouse.set(( event.clientX / domElement.width ) * 2 - 1, - ( event.clientY / domElement.height ) * 2 + 1);
+    mouse.set(( event.clientX / domElement.clientWidth ) * 2 - 1, - ( event.clientY / domElement.clientHeight ) * 2 + 1);
 
     if(!prevMouse.equals(mouse)){
       var rc = new THREE.Raycaster();
@@ -497,8 +497,8 @@ var MapControls = function ( object, domElement, options ) {
     centerpoint.y = event.touches[ 0 ].pageY + (dy / 2);
 
     var mouse = new THREE.Vector2();
-    mouse.x = ( centerpoint.x / domElement.width ) * 2 - 1;
-    mouse.y = - ( centerpoint.y / domElement.height ) * 2 + 1;
+    mouse.x = ( centerpoint.x / domElement.clientWidth ) * 2 - 1;
+    mouse.y = - ( centerpoint.y / domElement.clientHeight ) * 2 + 1;
 
     updateDollyTrack(mouse);
   }
